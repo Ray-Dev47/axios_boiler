@@ -197,8 +197,8 @@ function errorHandling() {
 			
 }
 
-// CANCEL TOKEN
-function cancelToken() {
+// CANCEL TOKEN - here we can cancel request on the go
+function cancelToken() { 
 	console.log('Cancel Token');
 }
 
