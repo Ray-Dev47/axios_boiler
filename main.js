@@ -175,6 +175,17 @@ function transformResponse() {
 // ERROR HANDLING
 function errorHandling() {
 	console.log('Error Handling');
+	axios
+		.get('https://jsonplaceholder.typicode.com/todoss')
+		.then((res) => showOutput(res))
+		.catch(function (error) {
+			if (error.response) {
+			  // The request was made and the server responded with a status code
+			  // that falls out of the range of 2xx
+			  console.log(error.response.data);
+			  console.log(error.response.status);
+			  console.log(error.response.headers);
+			}})
 }
 
 // CANCEL TOKEN
