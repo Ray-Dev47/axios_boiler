@@ -197,9 +197,21 @@ function errorHandling() {
 			
 }
 
-// CANCEL TOKEN
-function cancelToken() {
+// CANCEL TOKEN - here we can cancel request on the go
+function cancelToken() { 
 	console.log('Cancel Token');
+	const source = axios.CancelToken.source();
+
+	axios
+		.get('https://jsonplaceholder.typicode.com/todos', {cancelToken: source.token}) 
+		.then((res) => showOutput(res))
+		.catch(function (thrown) {
+			if (axios.isCancel(thrown)) {
+			  console.log('Request canceled', thrown.message);
+			} else {
+			  // handle error
+			}
+		  });
 }
 
 // INTERCEPTING REQUESTS & RESPONSES - allows us to run special(any) functions before the request/response runs
